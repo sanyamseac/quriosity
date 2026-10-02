@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Quriosity: Alice & Bob Explain</title>
+<style>
+:root{--bg:#f4f1ff;--card:#ffffff;--ink:#1d1b3a;--mute:#5d5a85;--a:#7c4dff;--b:#00b8d4;--hot:#ff4081;
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#12102b;--card:#1e1b45;--ink:#f1eeff;--mute:#aaa6d6}}
+:root[data-theme="dark"]{--bg:#12102b;--card:#1e1b45;--ink:#f1eeff;--mute:#aaa6d6}
+*{box-sizing:border-box}
+html,body{height:100%;margin:0}
+body{background:var(--bg);color:var(--ink);font-family:"Trebuchet MS","Segoe UI",system-ui,sans-serif;overflow:hidden;position:relative}
+.orb{position:fixed;border-radius:50%;filter:blur(60px);opacity:.35;animation:drift 12s ease-in-out infinite alternate;pointer-events:none}
+.o1{width:260px;height:260px;background:var(--a);top:-60px;left:-60px}
+.o2{width:300px;height:300px;background:var(--b);bottom:-80px;right:-60px;animation-delay:-5s}
+@keyframes drift{to{transform:translate(60px,40px) scale(1.2)}}
+.deck{position:relative;height:100%;max-width:980px;margin:0 auto;padding:16px}
+.slide{position:absolute;inset:16px 16px 70px;display:none;flex-direction:column;gap:12px;overflow-y:auto}
+.slide.on{display:flex;animation:in .5s ease}
+@keyframes in{from{opacity:0;transform:translateX(40px)}to{opacity:1;transform:none}}
+.tag{align-self:flex-start;background:var(--a);color:#fff;border-radius:99px;padding:4px 14px;font-size:13px;letter-spacing:.08em;text-transform:uppercase}
+h1{font-size:clamp(28px,6vw,52px);margin:0;line-height:1.05}
+h2{font-size:clamp(24px,4.5vw,38px);margin:0;line-height:1.1}
+.sub{color:var(--mute);font-size:clamp(15px,2.4vw,19px);margin:0}
+.stage{display:flex;flex-direction:column;gap:14px;margin-top:4px}
+.row{display:flex;align-items:flex-end;gap:10px;opacity:0;animation:pop .5s forwards}
+.row.b{flex-direction:row-reverse}
+.slide.on .row:nth-child(1){animation-delay:.3s}
+.slide.on .row:nth-child(2){animation-delay:1.4s}
+.slide.on .row:nth-child(3){animation-delay:2.6s}
+@keyframes pop{from{opacity:0;transform:translateY(14px) scale(.96)}to{opacity:1;transform:none}}
+.av{flex:none;width:64px;height:64px;border-radius:50%;display:grid;place-items:center;font-size:34px;color:#fff;animation:bob 2.2s ease-in-out infinite}
+.av.a{background:linear-gradient(135deg,var(--a),var(--hot))}
+.av.b{background:linear-gradient(135deg,var(--b),#3d5afe);animation-delay:-1s}
+@keyframes bob{50%{transform:translateY(-6px) rotate(3deg)}}
+.bub{background:var(--card);border-radius:18px;padding:12px 16px;font-size:clamp(15px,2.4vw,19px);line-height:1.4;max-width:min(560px,100%);box-shadow:0 6px 20px rgba(80,60,200,.15);border:2px solid transparent}
+.row.a .bub{border-bottom-left-radius:4px;border-color:var(--a)}
+.row.b .bub{border-bottom-right-radius:4px;border-color:var(--b)}
+.who{display:block;font-size:12px;font-weight:700;margin-bottom:2px;color:var(--mute)}
+.chips{display:flex;flex-wrap:wrap;gap:8px;opacity:0;animation:pop .5s 3.6s forwards}
+.chip{background:var(--card);border-radius:99px;padding:6px 14px;font-size:14px;border:2px dashed var(--a)}
+.big{font-size:80px;text-align:center;animation:spin 6s linear infinite;display:inline-block}
+@keyframes spin{to{transform:rotate(360deg)}}
+.cat{display:flex;gap:14px;justify-content:center;font-size:44px}
+.cat span{animation:flip 2.4s ease-in-out infinite}
+.cat span:nth-child(2){animation-delay:.4s}.cat span:nth-child(3){animation-delay:.8s}
+@keyframes flip{0%,100%{transform:scale(1)}50%{transform:scale(1.25) rotate(-8deg)}}
+.nav{position:fixed;left:0;right:0;bottom:0;display:flex;align-items:center;justify-content:center;gap:14px;padding:10px 16px calc(10px + env(safe-area-inset-bottom,0px))}
+button{font:inherit;border:0;border-radius:99px;padding:10px 22px;background:var(--a);color:#fff;font-weight:700;cursor:pointer}
+button:disabled{opacity:.35;cursor:default}
+.dots{display:flex;gap:6px}
+.dot{width:10px;height:10px;border-radius:50%;background:var(--mute);opacity:.4}
+.dot.on{background:var(--hot);opacity:1;transform:scale(1.3)}
+@media (prefers-reduced-motion:reduce){*{animation-duration:.01s!important;animation-delay:0s!important}}
+</style>
+</head>
+<body>
+<div class="orb o1"></div><div class="orb o2"></div>
+<div class="deck" id="deck">
+
+<section class="slide on">
+<span class="tag">Quriosity</span>
+<h1>Play first.<br>Understand later. ✨</h1>
+<p class="sub">Alice and Bob walk you through what this hackathon is all about.</p>
+<div class="stage">
+<div class="row a"><div class="av a">👩‍🚀</div><div class="bub"><span class="who">Alice</span>Hi! I'm Alice. We're making games where you accidentally learn quantum stuff.</div></div>
+<div class="row b"><div class="av b">🧑‍🔬</div><div class="bub"><span class="who">Bob</span>And I'm Bob. Yes, accidentally. Nobody reads a textbook at midnight, but everyone plays a game.</div></div>
+</div>
+<div class="cat"><span>⚛️</span><span>🎲</span><span>🕹️</span></div>
+</section>
+
+<section class="slide">
+<span class="tag">1 · The goal</span>
+<h2>Learn by playing</h2>
+<div class="stage">
+<div class="row a"><div class="av a">👩‍🚀</div><div class="bub"><span class="who">Alice</span>The goal is simple: a player finishes your game and suddenly <b>gets</b> a quantum idea.</div></div>
+<div class="row b"><div class="av b">🧑‍🔬</div><div class="bub"><span class="who">Bob</span>No lecture. No quiz at the end. The fun <i>is</i> the lesson.</div></div>
+<div class="row a"><div class="av a">👩‍🚀</div><div class="bub"><span class="who">Alice</span>That "ohhh, so THAT'S how it works" feeling is what we're chasing.</div></div>
+</div>
+</section>
+
+<section class="slide">
+<span class="tag">2 · Priorities</span>
+<h2>Idea first, graphics second 🎨</h2>
+<div class="stage">
+<div class="row b"><div class="av b">🧑‍🔬</div><div class="bub"><span class="who">Bob</span>Please don't spend 10 hours on shiny 3D models.</div></div>
+<div class="row a"><div class="av a">👩‍🚀</div><div class="bub"><span class="who">Alice</span>A plain square that teaches something true beats a gorgeous game that teaches nothing.</div></div>
+<div class="row b"><div class="av b">🧑‍🔬</div><div class="bub"><span class="who">Bob</span>Clear and correct wins. Pretty is a bonus.</div></div>
+</div>
+</section>
+
+<section class="slide">
+<span class="tag">3 · The heart of it</span>
+<h2>Build the game <i>around</i> the idea</h2>
+<div class="stage">
+<div class="row a"><div class="av a">👩‍🚀</div><div class="bub"><span class="who">Alice</span>Not "a normal game with the word quantum stuck on it".</div></div>
+<div class="row b"><div class="av b">🧑‍🔬</div><div class="bub"><span class="who">Bob</span>The rules themselves should <b>behave</b> like the real thing. If you remove the quantum idea, the game should fall apart.</div></div>
+<div class="row a"><div class="av a">👩‍🚀</div><div class="bub"><span class="who">Alice</span>Think things being in two states at once, looking at something changing it, or objects linked across distance.</div></div>
+</div>
+<div class="chips"><span class="chip">🌀 Superposition</span><span class="chip">👀 Measurement</span><span class="chip">🔗 Entanglement</span><span class="chip">🚪 Gates</span></div>
+</section>
+
+<section class="slide">
+<span class="tag">4 · Everyone's welcome</span>
+<h2>High-school brain? You're in 🎒</h2>
+<div class="stage">
+<div class="row b"><div class="av b">🧑‍🔬</div><div class="bub"><span class="who">Bob</span>If a player needs a physics degree, we've lost them.</div></div>
+<div class="row a"><div class="av a">👩‍🚀</div><div class="bub"><span class="who">Alice</span>Keep the math light. Let the gameplay explain things the way a good friend would.</div></div>
+</div>
+</section>
+
+<section class="slide">
+<span class="tag">5 · How to start</span>
+<h2>Learn. Struggle. Build. 🔨</h2>
+<div class="stage">
+<div class="row a"><div class="av a">👩‍🚀</div><div class="bub"><span class="who">Alice</span>Spend the first few hours learning something you <i>don't</i> fully get yet.</div></div>
+<div class="row b"><div class="av b">🧑‍🔬</div><div class="bub"><span class="who">Bob</span>Notice what confuses you. That "wait, what?!" moment is gold.</div></div>
+<div class="row a"><div class="av a">👩‍🚀</div><div class="bub"><span class="who">Alice</span>Then build a game that clears up that exact confusion for the next person.</div></div>
+</div>
+<div class="chips"><span class="chip">📚 Learn</span><span class="chip">😵 Struggle</span><span class="chip">🛠️ Build</span></div>
+</section>
+
+<section class="slide">
+<span class="tag">6 · Make it yours</span>
+<h2>Original &amp; easy to play 🌐</h2>
+<div class="stage">
+<div class="row b"><div class="av b">🧑‍🔬</div><div class="bub"><span class="who">Bob</span>No clones, no copies. Bring your own twist.</div></div>
+<div class="row a"><div class="av a">👩‍🚀</div><div class="bub"><span class="who">Alice</span>And make it playable in a browser! Judges love clicking a link and playing right away. Hosting it online is even better.</div></div>
+<div class="row b"><div class="av b">🧑‍🔬</div><div class="bub"><span class="who">Bob</span>Now go make something that makes a quantum idea click. See you at the jam! 🚀</div></div>
+</div>
+<div style="text-align:center"><span class="big">⚛️</span></div>
+</section>
+
+</div>
+<div class="nav">
+<button id="prev">← Back</button>
+<div class="dots" id="dots"></div>
+<button id="next">Next →</button>
+</div>
+<script>
+(function(){
+var s=[].slice.call(document.querySelectorAll('.slide')),i=0,d=document.getElementById('dots');
+s.forEach(function(){var e=document.createElement('div');e.className='dot';d.appendChild(e)});
+var p=document.getElementById('prev'),n=document.getElementById('next');
+function show(k){
+ i=Math.max(0,Math.min(s.length-1,k));
+ s.forEach(function(x,j){x.classList.remove('on');if(j===i){void x.offsetWidth;x.classList.add('on')}});
+ [].forEach.call(d.children,function(x,j){x.classList.toggle('on',j===i)});
+ p.disabled=i===0;n.disabled=i===s.length-1;
+}
+p.onclick=function(){show(i-1)};n.onclick=function(){show(i+1)};
+document.addEventListener('keydown',function(e){if(e.key==='ArrowRight'||e.key===' ')show(i+1);if(e.key==='ArrowLeft')show(i-1)});
+show(0);
+})();
+</script>
+</body>
+</html>
