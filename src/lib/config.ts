@@ -24,11 +24,9 @@ export const event = {
 	]
 };
 
-// Paste the full `src` of the script tag that ratufa.io gives you for the
-// submission form, for example:
-//   https://www.ratufa.io/c/ld.js?f=XXXXXXXX&n=XXXXXXXX&i=quriosity-submission
-// While this is empty, the submission page explains that the form is not live yet.
-export const ratufaLoaderSrc = '';
+// The `src` of the script tag ratufa.io gives you for the submission form. ratufa attaches to the
+// only <form> on /submit. Set this to '' to close submissions; the page then shows a notice instead.
+export const ratufaLoaderSrc = 'https://www.ratufa.io/c/ld.js?f=bq7eyc5a&n=n1.ratufa.io';
 
 export const links = {
 	isaqc: 'https://isaqc-official.github.io/',

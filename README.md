@@ -22,15 +22,13 @@ npm run dev
 
 `static/_headers` sets long cache lifetimes for fonts and hashed assets. Unknown paths fall back to `404.html`.
 
-## Turning on submissions (ratufa.io)
+## Submissions (ratufa.io)
 
-The form on `/submit` is a plain HTML form with the id `quriosity-submission`. ratufa binds to it through its loader script.
+The form on `/submit` posts to ratufa.io. Its loader script is set in `ratufaLoaderSrc` in `src/lib/config.ts`, and ratufa attaches itself to the only `<form>` on that page.
 
-1. Create a form on ratufa.io and copy the `src` of the script tag it gives you.
-2. Paste it into `ratufaLoaderSrc` in `src/lib/config.ts`. If ratufa asks for a form id, use `quriosity-submission`.
-3. Rebuild and deploy. While `ratufaLoaderSrc` is empty, the page shows a notice and does not submit.
+To close submissions, set `ratufaLoaderSrc` to `''` and redeploy. The page then shows a notice and does not submit.
 
-Fields sent: `team_name`, `members`, `email`, `option`, `game_link`, `repository_link`, `video_link`, `usage_consent`, `notes`.
+Fields sent: `team_name`, `option`, `game_link`, `repository_link`, `video_link`, `usage_consent`, `notes`.
 
 ## Where things live
 

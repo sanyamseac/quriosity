@@ -68,14 +68,6 @@
 					<span>Team name</span>
 					<input name="team_name" type="text" required autocomplete="organization" placeholder="The Superposed" />
 				</label>
-				<label>
-					<span>Members</span>
-					<textarea name="members" rows="3" required placeholder="One name per line, up to four people"></textarea>
-				</label>
-				<label>
-					<span>Contact email</span>
-					<input name="email" type="email" required autocomplete="email" placeholder="you@students.iiit.ac.in" />
-				</label>
 			</fieldset>
 
 			<fieldset>
@@ -263,7 +255,6 @@
 	}
 
 	input[type='text'],
-	input[type='email'],
 	input[type='url'],
 	textarea {
 		width: 100%;
