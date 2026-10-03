@@ -1,7 +1,6 @@
 <script lang="ts">
 	import { ArrowUpRight, Menu, X } from '@lucide/svelte';
 	import { page } from '$app/state';
-	import { submissions } from '#lib/deadline.svelte.ts';
 
 	const items = [
 		{ href: '/#idea', label: 'Idea' },
@@ -53,8 +52,8 @@
 		</ul>
 
 		<div class="end">
-			<a class="cta" class:is-closed={submissions.closed} href="/submit">
-				{submissions.closed ? 'Submissions closed' : 'Submit your game'}
+			<a class="cta" href="/submissions">
+				View submissions
 				<ArrowUpRight size={16} strokeWidth={2} />
 			</a>
 			<button
@@ -77,9 +76,7 @@
 				</li>
 			{/each}
 			<li style:--i={items.length}>
-				<a class="display red" class:is-closed={submissions.closed} href="/submit" onclick={() => (open = false)}>
-					{submissions.closed ? 'Closed' : 'Submit'}
-				</a>
+				<a class="display red" href="/submissions" onclick={() => (open = false)}>Submissions</a>
 			</li>
 		</ul>
 	</div>
@@ -219,15 +216,6 @@
 		background: var(--red);
 	}
 
-	.cta.is-closed {
-		background: var(--paper-2);
-		color: var(--ink-3);
-	}
-
-	.cta.is-closed:hover {
-		background: var(--line);
-	}
-
 	.toggle {
 		display: none;
 		place-items: center;
@@ -275,10 +263,6 @@
 
 	.sheet a.red {
 		color: var(--red);
-	}
-
-	.sheet a.red.is-closed {
-		color: var(--ink-3);
 	}
 
 	@media (max-width: 980px) {

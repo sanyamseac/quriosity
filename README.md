@@ -34,6 +34,8 @@ Fields sent: `team_name`, `option`, `game_link`, `repository_link`, `video_link`
 
 - `src/lib/config.ts` holds event times, prizes, links and the ratufa script.
 - `src/lib/content.ts` holds all of the copy: options, rules, timeline, deliverables and questions.
+- `src/routes/(site)/submissions/+page.svelte` lists every game, read at build time from `resources/submissions.csv` (the ratufa export). Replace the CSV and rebuild to refresh it.
+- `submissions/` (git ignored) holds clones of every team repository, one folder per team.
 - `src/routes/discord/+page.svelte` is the full screen Discord invite with its QR code, which you can save as PNG or SVG.
 - `src/routes/slides/+page.svelte` is the Alice and Bob deck, with its copy in `slides` inside `content.ts`.
 - `src/lib/components/BlochSphere.svelte` is the interactive qubit in the hero.

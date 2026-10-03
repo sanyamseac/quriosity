@@ -2,7 +2,6 @@
 	import { ArrowUpRight } from '@lucide/svelte';
 	import { event, links } from '#lib/config.ts';
 	import { reveal } from '#lib/reveal.ts';
-	import { submissions } from '#lib/deadline.svelte.ts';
 
 	const elsewhere = [
 		{ label: 'Discord', href: links.discord },
@@ -20,8 +19,8 @@
 		<div class="close">
 			<h2 class="display" use:reveal>Go make something click</h2>
 			<div use:reveal={0.1}>
-				<a class="btn light" class:is-closed={submissions.closed} href="/submit">
-					{submissions.closed ? 'Submissions closed' : 'Submit your game'}
+				<a class="btn light" href="/submissions">
+					View submissions
 					<ArrowUpRight size={18} strokeWidth={2} />
 				</a>
 			</div>

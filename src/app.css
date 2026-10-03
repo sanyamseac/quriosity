@@ -220,28 +220,6 @@ canvas {
 	--fg: var(--ink);
 }
 
-/* After submissions close: still a working link, just quietly greyed out. */
-.btn.is-closed {
-	opacity: 0.45;
-	filter: grayscale(1);
-}
-
-.btn.is-closed::before {
-	display: none;
-}
-
-.btn.is-closed:hover {
-	border-color: var(--bg);
-	color: var(--fg);
-}
-
-.btn.ghost.is-closed:hover {
-	border-color: var(--line);
-}
-
-.btn.is-closed:hover svg {
-	transform: none;
-}
 
 /* Scroll reveal */
 .reveal {

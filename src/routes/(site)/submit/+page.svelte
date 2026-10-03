@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { ArrowLeft, CircleAlert, MessageCircle, Send } from '@lucide/svelte';
+	import { ArrowLeft, ArrowUpRight, CircleAlert, MessageCircle, Send } from '@lucide/svelte';
 	import Countdown from '#lib/components/Countdown.svelte';
 	import { links, ratufaLoaderSrc } from '#lib/config.ts';
 	import { deliverables, tracks } from '#lib/content.ts';
@@ -48,7 +48,10 @@
 				<MessageCircle size={18} strokeWidth={1.75} />
 				Join the Discord
 			</a>
-			<a class="btn ghost" href="/">Back to quriosity</a>
+			<a class="btn ghost" href="/submissions">
+				View submissions
+				<ArrowUpRight size={18} strokeWidth={2} />
+			</a>
 		</div>
 	</section>
 {:else}

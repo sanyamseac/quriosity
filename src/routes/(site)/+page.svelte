@@ -26,7 +26,6 @@
 	import { event, links } from '#lib/config.ts';
 	import { concepts, deliverables, dialogue, faqs, principles, timeline, tracks, values } from '#lib/content.ts';
 	import { reveal } from '#lib/reveal.ts';
-	import { submissions } from '#lib/deadline.svelte.ts';
 
 	const ruleIcons = [Gamepad2, Lightbulb, Orbit, Users, Hammer, Sparkles, Rocket];
 	const deliverableIcons = [Flag, Gamepad2, GitBranch, Video, FileText];
@@ -86,8 +85,8 @@
 					Explore the options
 					<ArrowDown size={18} strokeWidth={2} />
 				</a>
-				<a class="btn ghost" class:is-closed={submissions.closed} href="/submit">
-					{submissions.closed ? 'Submissions closed' : 'Submit your game'}
+				<a class="btn ghost" href="/submissions">
+					View submissions
 					<ArrowUpRight size={18} strokeWidth={2} />
 				</a>
 			</div>
@@ -238,13 +237,9 @@
 		</ol>
 
 		<div class="deliver-cta" use:reveal>
-			<p>
-				{submissions.closed
-					? 'Submissions closed at 03:01 on 4 October. Thank you to every team that handed in a game.'
-					: 'The submission form lives on its own page, ready when you are.'}
-			</p>
-			<a class="btn" class:is-closed={submissions.closed} href="/submit">
-				{submissions.closed ? 'Submissions closed' : 'Open the submission form'}
+			<p>Submissions closed at 03:01 on 4 October. Every game that made it in now has a home of its own.</p>
+			<a class="btn" href="/submissions">
+				View submissions
 				<ArrowUpRight size={18} strokeWidth={2} />
 			</a>
 		</div>
