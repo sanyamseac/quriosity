@@ -26,7 +26,7 @@ npm run dev
 
 The form on `/submit` posts to ratufa.io. Its loader script is set in `ratufaLoaderSrc` in `src/lib/config.ts`, and ratufa attaches itself to the only `<form>` on that page.
 
-To close submissions, set `ratufaLoaderSrc` to `''` and redeploy. The page then shows a notice and does not submit.
+Submissions close on their own at `submissionsClose` in `src/lib/config.ts` (03:01 IST on 4 October). The check runs in the browser, so no redeploy is needed: `/submit` swaps the form for a closed notice, ratufa is never loaded, and every Submit button greys out while still linking to `/submit`.
 
 Fields sent: `team_name`, `option`, `game_link`, `repository_link`, `video_link`, `usage_consent`, `notes`.
 

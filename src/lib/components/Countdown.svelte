@@ -3,7 +3,7 @@
 	import { event } from '#lib/config.ts';
 
 	const kickoff = Date.parse(event.kickoff);
-	const sprintEnd = Date.parse(event.sprintEnd);
+	const submissionsClose = Date.parse(event.submissionsClose);
 	const close = Date.parse(event.close);
 
 	let now = $state<number | null>(null);
@@ -17,7 +17,7 @@
 	const phase = $derived.by(() => {
 		if (now === null) return { label: 'Kickoff in', target: kickoff };
 		if (now < kickoff) return { label: 'Kickoff in', target: kickoff };
-		if (now < sprintEnd) return { label: 'The sprint closes in', target: sprintEnd };
+		if (now < submissionsClose) return { label: 'Submissions close in', target: submissionsClose };
 		if (now < close) return { label: 'Finals are underway', target: null };
 		return { label: 'That is a wrap. Thank you for playing.', target: null };
 	});

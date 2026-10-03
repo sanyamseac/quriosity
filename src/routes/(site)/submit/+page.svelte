@@ -1,16 +1,16 @@
 <script lang="ts">
-	import { onMount } from 'svelte';
-	import { ArrowLeft, CircleAlert, Send } from '@lucide/svelte';
+	import { ArrowLeft, CircleAlert, MessageCircle, Send } from '@lucide/svelte';
 	import Countdown from '#lib/components/Countdown.svelte';
-	import { ratufaLoaderSrc } from '#lib/config.ts';
+	import { links, ratufaLoaderSrc } from '#lib/config.ts';
 	import { deliverables, tracks } from '#lib/content.ts';
+	import { submissions } from '#lib/deadline.svelte.ts';
 
 	const FORM_ID = 'quriosity-submission';
-	const live = ratufaLoaderSrc.trim().length > 0;
+	const live = $derived(ratufaLoaderSrc.trim().length > 0 && !submissions.closed);
 
 	let notice = $state('');
 
-	onMount(() => {
+	$effect(() => {
 		if (!live) return;
 		// ratufa finds its loader by this id and binds itself to the form on the page.
 		document.getElementById('ratufa_loader')?.remove();
@@ -25,6 +25,7 @@
 	function onSubmit(e: SubmitEvent) {
 		if (live) return; // ratufa handles the submission.
 		e.preventDefault();
+		if (submissions.closed) return;
 		notice = 'The form is not accepting entries just yet. It goes live during the sprint, so hold on to those links.';
 	}
 </script>
@@ -34,6 +35,23 @@
 	<meta name="description" content="Hand in your quriosity game: option, playable link, repository, video and README." />
 </svelte:head>
 
+{#if submissions.closed}
+	<section class="closed wrap">
+		<a class="back" href="/"><ArrowLeft size={16} strokeWidth={2} /> Back to quriosity</a>
+		<h1 class="display"><span>Submissions</span><span class="red">closed</span></h1>
+		<p class="lede">
+			The clock struck 03:01 and the form has been put to bed. Thank you to every team that handed in a game; the
+			judges have plenty to play with. Finalists and results will be announced on Discord, so keep an eye on it.
+		</p>
+		<div class="closed-actions">
+			<a class="btn" href={links.discord} target="_blank" rel="noopener">
+				<MessageCircle size={18} strokeWidth={1.75} />
+				Join the Discord
+			</a>
+			<a class="btn ghost" href="/">Back to quriosity</a>
+		</div>
+	</section>
+{:else}
 <section class="submit">
 	<div class="wrap grid">
 		<aside>
@@ -127,8 +145,38 @@
 		</form>
 	</div>
 </section>
+{/if}
 
 <style>
+	.closed {
+		min-height: 78vh;
+		display: grid;
+		align-content: center;
+		justify-items: start;
+		gap: 32px;
+		padding-block: clamp(120px, 16vh, 180px) clamp(88px, 10vw, 144px);
+	}
+
+	.closed h1 {
+		display: grid;
+		font-size: clamp(52px, 11vw, 176px);
+		white-space: normal;
+	}
+
+	.closed .red {
+		color: var(--red);
+	}
+
+	.closed .lede {
+		max-width: 46ch;
+	}
+
+	.closed-actions {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 12px;
+	}
+
 	.submit {
 		padding-top: clamp(112px, 14vh, 160px);
 		padding-bottom: clamp(88px, 10vw, 144px);

@@ -12,8 +12,8 @@ export const event = {
 
 	// All times are India Standard Time (UTC+05:30).
 	kickoff: '2026-10-03T10:30:00+05:30',
-	// Sixteen hours after kickoff. Confirm with the core team before the event.
-	sprintEnd: '2026-10-04T02:30:00+05:30',
+	// The submission form switches off at this moment, and every Submit button greys out.
+	submissionsClose: '2026-10-04T03:01:00+05:30',
 	close: '2026-10-04T06:00:00+05:30',
 
 	teamSize: 4,
@@ -25,7 +25,7 @@ export const event = {
 };
 
 // The `src` of the script tag ratufa.io gives you for the submission form. ratufa attaches to the
-// only <form> on /submit. Set this to '' to close submissions; the page then shows a notice instead.
+// only <form> on /submit. It is never loaded after `submissionsClose`.
 export const ratufaLoaderSrc = 'https://www.ratufa.io/c/ld.js?f=bq7eyc5a&n=n1.ratufa.io';
 
 export const links = {
