@@ -329,3 +329,57 @@ export const slides: Slide[] = [
 		chips: [{ icon: 'rocket', label: 'Go build it' }]
 	}
 ];
+
+// Results, announced 4 October 2026. `team` must match team_name in resources/submissions.csv;
+// links and the option come from there. Screenshots live in static/img/winners/<slug>.webp.
+export interface Result {
+	team: string;
+	slug: string;
+	title: string;
+	blurb: string;
+}
+
+export const podium: Result[] = [
+	{
+		team: 'Paradox Protocol',
+		slug: 'paradox-protocol',
+		title: 'No Peeking!',
+		blurb:
+			'A night shift at the Qubble Daycare with exactly one rule: do not peek. Keep the sleeping qubits safe through the dark without ever looking at them, which turns out to be precisely how error syndromes work.'
+	},
+	{
+		team: 'treekeliye',
+		slug: 'treekeliye',
+		title: 'Nothing Is Lost',
+		blurb:
+			'A little story about a lantern, some levers and the one thing you cannot undo. Every gate can be turned back, step by step. Measurement is the only door that stays shut.'
+	},
+	{
+		team: 'Ignotus',
+		slug: 'ignotus',
+		title: 'Null Signal',
+		blurb:
+			'Aboard the Astra-7 research station, a faint signal hides in the static. Amplify it, round after careful round, until something finally answers.'
+	}
+];
+
+export const mentions: Result[] = [
+	{
+		team: 'Qubit Busters',
+		slug: 'qubit-busters',
+		title: 'Qubit Roll',
+		blurb: 'A rolling puzzle where the state of your qubit decides what every move does, from dashing in |0⟩ to splitting into two paths at once.'
+	},
+	{
+		team: "shor we'll participate",
+		slug: 'shor-we-ll-participate',
+		title: 'Qubit FC',
+		blurb: 'Six a side football where every pass is a quantum gate. Build your state, beat the keeper, make the measurement.'
+	},
+	{
+		team: 'Zenvora',
+		slug: 'zenvora',
+		title: 'Quantum Bunny',
+		blurb: 'A pixel platformer about basis switching, with a scanner for each basis and a quantum lab for experimenting between levels.'
+	}
+];

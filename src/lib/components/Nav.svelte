@@ -3,6 +3,7 @@
 	import { page } from '$app/state';
 
 	const items = [
+		{ href: '/#winners', label: 'Winners' },
 		{ href: '/#idea', label: 'Idea' },
 		{ href: '/#rules', label: 'Rules' },
 		{ href: '/#options', label: 'Options' },

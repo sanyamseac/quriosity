@@ -23,6 +23,8 @@
 	import Marquee from '#lib/components/Marquee.svelte';
 	import SectionHead from '#lib/components/SectionHead.svelte';
 	import Tracks from '#lib/components/Tracks.svelte';
+	import Winners from '#lib/components/Winners.svelte';
+	import { submissions } from '#lib/submissions.ts';
 	import { event, links } from '#lib/config.ts';
 	import { concepts, deliverables, dialogue, faqs, principles, timeline, tracks, values } from '#lib/content.ts';
 	import { reveal } from '#lib/reveal.ts';
@@ -81,8 +83,8 @@
 			</dl>
 
 			<div class="ctas rise" style:--d="0.75s">
-				<a class="btn" href="#options">
-					Explore the options
+				<a class="btn" href="#winners">
+					Meet the winners
 					<ArrowDown size={18} strokeWidth={2} />
 				</a>
 				<a class="btn ghost" href="/submissions">
@@ -115,10 +117,29 @@
 
 <Marquee words={concepts} />
 
+<!-- 01 Winners -->
+<section id="winners" class="section">
+	<div class="wrap">
+		<SectionHead n="01" label="Results" title="The winners">
+			<p>
+				{submissions.length} games, one very long night, and a panel that had to choose. These are the ones that made a quantum
+				idea click the hardest. Every game is still worth a play, so do browse the rest.
+			</p>
+		</SectionHead>
+
+		<Winners />
+
+		<a class="more" href="/submissions" use:reveal>
+			See all {submissions.length} submissions
+			<ArrowUpRight size={16} strokeWidth={2} />
+		</a>
+	</div>
+</section>
+
 <!-- 01 The idea -->
 <section id="idea" class="section">
 	<div class="wrap">
-		<SectionHead n="01" label="The idea" title="Play first|Understand later">
+		<SectionHead n="02" label="The idea" title="Play first|Understand later">
 			<p>
 				Nobody falls for quantum mechanics by reading a textbook at two in the morning. People fall for it by poking at
 				it, getting it gloriously wrong, and poking once more. So here is the brief: build a game that teaches one real
@@ -154,7 +175,7 @@
 <!-- 02 Ground rules -->
 <section id="rules" class="section">
 	<div class="wrap">
-		<SectionHead n="02" label="Ground rules" title="Seven ground rules">
+		<SectionHead n="03" label="Ground rules" title="Seven ground rules">
 			<p>
 				Not legal fine print. Think of these as the physics of the event itself. Bend them and things start to wobble;
 				break them and the whole thing collapses.
@@ -178,7 +199,7 @@
 <!-- 03 Options -->
 <section id="options" class="section dark">
 	<div class="wrap">
-		<SectionHead n="03" label="The options" title="Six ways in" dark>
+		<SectionHead n="04" label="The options" title="Six ways in" dark>
 			<p>
 				Six doors into the same strange house. Pick the one that sparks something and let it shape the entire game.
 				Each is a real piece of physics, and each is stranger than it first appears.
@@ -192,7 +213,7 @@
 <!-- 04 Schedule -->
 <section id="schedule" class="section">
 	<div class="wrap">
-		<SectionHead n="04" label="Schedule" title="One long night">
+		<SectionHead n="05" label="Schedule" title="One long night">
 			<p>
 				Twenty hours from kickoff to the final pitch, sixteen of them spent building. Pace yourselves, drink water, and
 				save a little wonder for the demo.
@@ -215,7 +236,7 @@
 <!-- 05 Deliverables -->
 <section id="deliverables" class="section">
 	<div class="wrap">
-		<SectionHead n="05" label="Deliverables" title="What to hand in">
+		<SectionHead n="06" label="Deliverables" title="What to hand in">
 			<p>
 				Five things, all through one form. Leave any of them out and the judges get sad, and sad judges are not a
 				winning strategy.
@@ -249,7 +270,7 @@
 <!-- 06 Prizes -->
 <section id="prizes" class="section">
 	<div class="wrap">
-		<SectionHead n="06" label="Prizes" title="The spoils">
+		<SectionHead n="07" label="Prizes" title="The spoils">
 			<p>
 				A prize pool of ₹{rupees(pool)}, split three ways. The glory, as always, is shared by anyone who makes a quantum
 				idea finally click for somebody else.
@@ -279,7 +300,7 @@
 <!-- 07 Questions -->
 <section id="questions" class="section">
 	<div class="wrap">
-		<SectionHead n="07" label="Questions" title="Fair questions">
+		<SectionHead n="08" label="Questions" title="Fair questions">
 			<p>
 				Something we have not covered? Ask us on <a class="inline" href={links.discord} target="_blank" rel="noopener"
 					>Discord</a
@@ -537,6 +558,10 @@
 	.more:hover {
 		color: var(--red);
 		border-color: var(--red);
+	}
+
+	#winners .more {
+		margin-top: clamp(48px, 6vw, 80px);
 	}
 
 	.line:first-child {
